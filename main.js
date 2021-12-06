@@ -33,7 +33,7 @@ function digPow(n, p) {// kata mame : "Playing with digits" 6 kyu
     return degre / n;
 }
 console.log(digPow(46288, 3));
-function digPow(n, p) {
+function digPow1(n, p) {
     var x = String(n).split("").reduce((s, d, i) => s + Math.pow(d, p + i), 0)// most interesting solution of this task
     return x % n ? -1 : x / n
 }
