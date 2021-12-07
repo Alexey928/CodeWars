@@ -1,5 +1,5 @@
 // let str = "How can mirrors be real if our eyes aren't real"
-//kata name "toJadenCase" --> 6kyu
+//kata name "toJadenCase" --> 7kyu
 String.prototype.toJadenCase = function () {//adet to class String metod toJadenCase --> [How Can Mirrors...]
     let flag = false;
     let arr = [...this];
@@ -58,3 +58,27 @@ function rgb(...arg) {  // на вход RGB(...,...,...) на выход HEX(FF
 }
 console.log(rgb(266, 215, 0));
 //__________________________________________________________________________________________________________
+function powMod(n, p, m) {//  функция реализует Math.pow(x,y)%n для очень больших y ->10000000 
+    if (n < 1) { return 0; }
+    if (m < 0) { m = 0; }
+    p = Math.round(p);
+    n = n % m;
+    var r = 1;
+    while (p >= 1) {
+        if (p % 2) {
+            r = (r * n) % m;
+        }
+        n = (n * n) % m;
+        p = Math.floor(p / 2);
+    }
+
+    return r;
+}
+console.log(powMod(5, 1000000, 2437));
+
+//_________________________________________________________________________________________________________________
+
+
+
+
+
