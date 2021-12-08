@@ -71,14 +71,66 @@ function powMod(n, p, m) {//  функция реализует Math.pow(x,y)%n 
         n = (n * n) % m;
         p = Math.floor(p / 2);
     }
-
     return r;
 }
 console.log(powMod(5, 1000000, 2437));
-
+/*Если нужен только остаток, то его можно брать в ходе работы, тогда мы не упарываемся в километровые числа. Самый простой вариант - при возведении в степень n**p сделать
+цикл из p умножений на n (после каждого берем остаток), но гораздо быстрее смотреть биты числа р и умножать на соответствующие им значения n**(2**i) */
 //_________________________________________________________________________________________________________________
 
 
 
+function areaOfIntersection(a, b, r) {
+    let rr1 = r * r;
+    let rr0 = r * r;
+    let r0 = r;
+    let r1 = r
+    let x0 = a[0],
+        x1 = b[0],
+        y0 = a[1],
+        y1 = b[1];
+    var d = Math.sqrt((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0));
+    if (d > r1 + r0) {
+        return 0;
+    }
+    else if (d <= Math.abs(r0 - r1) && r0 >= r1) {
 
+        return Math.trunc(Math.PI * rr1);
+    }
+    else if (d <= Math.abs(r0 - r1) && r0 < r1) {
 
+        return Math.trunc(Math.PI * rr0);
+    }
+    else {
+        var phi = (Math.acos((rr0 + (d * d) - rr1) / (2 * r0 * d))) * 2;
+        var theta = (Math.acos((rr1 + (d * d) - rr0) / (2 * r1 * d))) * 2;
+        var area1 = 0.5 * theta * rr1 - 0.5 * rr1 * Math.sin(theta);
+        var area2 = 0.5 * phi * rr0 - 0.5 * rr0 * Math.sin(phi);
+        return Math.trunc(area1 + area2);
+    }
+}
+console.log(areaOfIntersection([0, 0], [7, 0], 5)); // S пересечения двух окружностей 
+//______________________________________________________________________________________________________________
+
+function annulusArea(a) {
+    let x = Math.pow(a / 2, 2) * Math.PI;
+    let y = x.toString().split("");
+    let lengh;
+    y.forEach((item, i) => {
+        if (item === ".") {
+            lengh = i + 3;
+        }
+    });
+    y.length = lengh;
+    console.log(y)
+    // if (parseInt(y[y.length - 1]) >= 5) {
+    //     y[y.length - 2] = y[y.length - 2] + 1;
+    //     y.pop();
+    //     console.log(y)
+    // } else {
+    //     y[y.length - 2] = y[y.length - 2] - 1;
+    //     y.pop();
+    // }
+    return parseFloat(y.join(""));
+}
+console.log(annulusArea(13));
