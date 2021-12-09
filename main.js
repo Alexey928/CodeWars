@@ -118,19 +118,26 @@ function annulusArea(a) {
     let lengh;
     y.forEach((item, i) => {
         if (item === ".") {
-            lengh = i + 3;
+            lengh = i + 4;
         }
     });
     y.length = lengh;
-    console.log(y)
-    // if (parseInt(y[y.length - 1]) >= 5) {
-    //     y[y.length - 2] = y[y.length - 2] + 1;
-    //     y.pop();
-    //     console.log(y)
-    // } else {
-    //     y[y.length - 2] = y[y.length - 2] - 1;
-    //     y.pop();
-    // }
+
+    if (parseInt(y[y.length - 1]) >= 5) {
+        y[y.length - 2] = y[y.length - 2] + 1;
+        y.pop();
+    } else {
+        y.pop();
+    }
     return parseFloat(y.join(""));
 }
 console.log(annulusArea(13));
+
+
+
+
+function remainder(a, b) {
+    return a >= b ? a % b : b % a
+
+}
+Beginner Series #3 Sum of Numbers 1111111111
