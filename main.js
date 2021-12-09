@@ -168,5 +168,25 @@ function M(n) {
     return n - F(M(n - 1))
 }
 console.log(F(6))
-console.log(F(6))
+console.log(M(6))
 //____________________________________________________________________________
+
+const binaryArrayToNumber = arr => { // с бинарного масива определяет десятичное значение 
+    const summArr = []
+    const arrLengh = arr.length;
+    let iterator = 0;
+    let flag = true;
+    arr.forEach((item, i) => {
+        if (item === 0) {
+            flag = false;
+        }
+        if (flag) {
+            summArr[iterator] = 2 ** (arrLengh - i);
+            iterator += 1;
+        } else { flag = true }
+    })
+    return (summArr.reduce((sum, current) => sum + current, 0) / 2);
+
+};
+console.log(binaryArrayToNumber([0, 1, 1, 1]));//-->7 :)
+//_______________________________________________________________________________________
