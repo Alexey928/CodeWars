@@ -141,17 +141,31 @@ function remainder(a, b) { // выберет большее и посчитае�
 }
 //Beginner Series #3 Sum of Numbers 1111111111
 //_____________________________________________________________________________
-function grid(N) { //  будет  реализовывать алфовитную матрицу 
+function grid(N) { //    реализует алфовитную матрицу 
     let str = "";
+    let linerIterator = 0;
+    let linecount = 1
     let iterator = N * N;
     let aTuZ = 97
     while (iterator != 0) {
-        if (aTuZ > 123) {
+        if (aTuZ > 122) {
             aTuZ = 97;
         }
-        str += String.fromCodePoint(aTuZ);
+        if (linerIterator === N) {
+            str += "\n"
+            linerIterator = 0;
+            aTuZ = 97 + linecount
+            linecount++
+        } else {
+            str += `${String.fromCodePoint(aTuZ++)} `;
+            iterator--;
+            linerIterator++
+        }
     }
+    return N === 1 ? "a" : str
 }
+console.log(grid(30))
+
 // ______________________________________________________________________
 // реализует Хофштадтерские женские и мужские последовательности. 
 function F(n) {
@@ -190,3 +204,6 @@ const binaryArrayToNumber = arr => { // с бинарного масива оп�
 };
 console.log(binaryArrayToNumber([0, 1, 1, 1]));//-->7 :)
 //_______________________________________________________________________________________
+
+
+console.log(String.fromCodePoint(122))
