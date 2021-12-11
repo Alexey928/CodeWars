@@ -205,5 +205,25 @@ const binaryArrayToNumber = arr => { // с бинарного масива оп�
 console.log(binaryArrayToNumber([0, 1, 1, 1]));//-->7 :)
 //_______________________________________________________________________________________
 
+function findOdd2(A) {//ишет  не четное колво повторов в масиве
+    let a = [...A].sort((a, b) => a - b);
+    let compareValue = a[0];
+    let appears = 0
+    for (let i = 0; i < a.length; i++) {
+        if (compareValue === a[i]) {
+            appears += 1;
+            compareValue = a[i]
+        } else {
+            if (appears % 2) {
+                return a[i - 1];
+            }
+            appears += 1;
+            compareValue = a[i]
+        }
+    }
+    return (a[a.length - 1] !== a[a.length - 2]) ? a[a.length - 1] : a[0];
+}
+const findOdd = (xs) => xs.reduce((a, b) => a ^ b);// interesting desigen основаное на применении исключаещего или 
+console.log(findOdd([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1]));
+//_______________________________________________________________________________________
 
-console.log(String.fromCodePoint(122))
