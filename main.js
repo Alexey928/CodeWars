@@ -247,4 +247,38 @@ function iceBrickVolume(radius, bottleLength, rimLength) {  //кубик в бу
     return Math.round((bottleLength - rimLength) * ((2 * radius) * (2 * radius) / 2))
 }
 console.log(iceBrickVolume(5, 30, 7));
-//Test.assertEquals(adjacentElementsProduct([5, 6, -4, 2, 3, 2, -23]), 30);
+
+//____________________________________________________________________________________
+function houseOfCards(floors) {// находит колво карт в карточном домике в зависимости от кол - ва етожей 1 етаж 7карт 2 етажа 15 итд ...
+    if (isAN(floors) && floors > 0 && floors % floors === 0) {
+        floors = floors;
+    } else { return new Error('Whoops! is a not a namber') }// Валидируем на целое и то что это число если что то поднимаем ошибку
+    function NumOfBasisWall(w) {
+        if (w === 1) {
+            return 4
+        }
+        return ((NumOfBasisWall(w - 1) + 2))
+    }
+    let sumWal = 2
+    for (let i = 1; i <= floors; i++) {
+        sumWal += NumOfBasisWall(i);
+    }
+    function NumOfBasisFlor(f) {
+        if (f === 1) {
+            return 1
+        }
+        return NumOfBasisFlor(f - 1) + 1
+    }
+    let sumFlor = 0
+    for (let i = 1; i <= floors; i++) {
+        sumFlor += NumOfBasisFlor(i);
+    }
+    return sumFlor + sumWal
+
+    function isAN(value) {
+        return isFinite(value) && value === parseInt(value, 10);
+    }
+}
+console.log(houseOfCards(5));
+console.log(houseOfCards("5"));
+
