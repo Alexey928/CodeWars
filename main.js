@@ -227,3 +227,21 @@ const findOdd = (xs) => xs.reduce((a, b) => a ^ b);// interesting desigen осн
 console.log(findOdd([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1]));
 //_______________________________________________________________________________________
 
+
+function even_or_odd(number) {
+    return number % 2 === 0 ? "Even" : "Odd";
+}
+
+console.log(even_or_odd(4))
+
+function adjacentElementsProduct(array) {
+    let curMul = -Infinity;
+    for (let i = 1; i < array.length; i++) {
+        curMul = array[i - 1] * array[i] > curMul ? array[i - 1] * array[i] : curMul;
+    }
+    return curMul;
+}
+
+console.log(adjacentElementsProduct([5, 6, -4, 2, 3, 2, -23]))
+
+//Test.assertEquals(adjacentElementsProduct([5, 6, -4, 2, 3, 2, -23]), 30);
