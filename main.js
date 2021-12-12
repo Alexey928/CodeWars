@@ -226,14 +226,12 @@ function findOdd2(A) {//ишет  не четное колво повторов 
 const findOdd = (xs) => xs.reduce((a, b) => a ^ b);// interesting desigen основаное на применении исключаещего или 
 console.log(findOdd([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1]));
 //_______________________________________________________________________________________
-
-
 function even_or_odd(number) {
     return number % 2 === 0 ? "Even" : "Odd";
 }
 
 console.log(even_or_odd(4))
-
+//__________________________________________________________________________
 function adjacentElementsProduct(array) {
     let curMul = -Infinity;
     for (let i = 1; i < array.length; i++) {
@@ -244,4 +242,9 @@ function adjacentElementsProduct(array) {
 
 console.log(adjacentElementsProduct([5, 6, -4, 2, 3, 2, -23]))
 
+//__________________________________________________________________________________________________
+function iceBrickVolume(radius, bottleLength, rimLength) {  //кубик в бутылке :)
+    return Math.round((bottleLength - rimLength) * ((2 * radius) * (2 * radius) / 2))
+}
+console.log(iceBrickVolume(5, 30, 7));
 //Test.assertEquals(adjacentElementsProduct([5, 6, -4, 2, 3, 2, -23]), 30);
