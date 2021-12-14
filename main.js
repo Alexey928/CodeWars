@@ -1,3 +1,4 @@
+
 // let str = "How can mirrors be real if our eyes aren't real"
 //kata name "toJadenCase" --> 7kyu
 String.prototype.toJadenCase = function () {//adet to class String metod toJadenCase --> [How Can Mirrors...]
@@ -229,7 +230,6 @@ console.log(findOdd([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1]));
 function even_or_odd(number) {
     return number % 2 === 0 ? "Even" : "Odd";
 }
-
 console.log(even_or_odd(4))
 //__________________________________________________________________________
 function adjacentElementsProduct(array) {
@@ -279,6 +279,49 @@ function houseOfCards(floors) {// находит колво карт в карт
         return isFinite(value) && value === parseInt(value, 10);
     }
 }
-console.log(houseOfCards(5));
+console.log(houseOfCards(100));
 console.log(houseOfCards("5"));
+
+//__________________________________________________________________________________________
+function pickPeaks(arr) {// поиск пиков в масиве с учетом плато (немного недоделаная :(  )
+    var peak;
+    let ind = [];
+    let pik = arr.reduce(function (peaks, val, i) {
+        if (arr[i + 1] > arr[i]) {
+            peak = arr[i + 1];
+        } else if ((arr[i + 1] < arr[i]) && (typeof peak === 'number')) {
+            peaks.push(peak);
+            if (arr[i] !== arr[i + 1] && true) {
+                ind.push(i);
+            }
+            peak = undefined;
+        }
+        return peaks;
+    }, []);
+
+    return { pos: ind, peaks: pik };
+}
+console.log(pickPeaks([3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 2, 2, 1]))
+//________________________________________________________________________________________
+function areaLargestSquare(r) {
+    return 2 * (r ** 2);  // площадь квадрата впвписанного в окружность;
+}
+//_________________________________________________________________________________________
+
+function fibonacci(max) {// cумма всех четных в последовательности фибоначи 
+    let basis = [0, 1];
+    let evenSumm = 0;
+
+    while (basis[1] < max) {
+        let timaBasis = [basis[1], (basis[0] + basis[1])];
+        basis[0] = timaBasis[0]
+        basis[1] = timaBasis[1]
+
+        if (timaBasis[1] % 2 === 0 && timaBasis[1] < max) {
+            evenSumm += timaBasis[1];
+        }
+    }
+    return evenSumm;
+}
+console.log(fibonacci(25997544));
 
