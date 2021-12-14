@@ -311,7 +311,6 @@ function areaLargestSquare(r) {
 function fibonacci(max) {// cумма всех четных в последовательности фибоначи 
     let basis = [0, 1];
     let evenSumm = 0;
-
     while (basis[1] < max) {
         let timaBasis = [basis[1], (basis[0] + basis[1])];
         basis[0] = timaBasis[0]
@@ -324,4 +323,20 @@ function fibonacci(max) {// cумма всех четных в последов�
     return evenSumm;
 }
 console.log(fibonacci(25997544));
+//__________________________________________________________________________________________
 
+function tribonacci(signature, n) {// 
+    if (n === 0) {
+        return [];
+    }
+    if (n > 0 && n < 3) {
+        return [1];
+    }
+    let sisLenght = n - signature.length;
+    for (let i = 0; sisLenght > i; i++) {
+        signature.push((signature[i] + signature[i + 1] + signature[i + 2]))
+    }
+    return signature;
+}
+
+console.log(tribonacci([2, 5, 6], 5));
