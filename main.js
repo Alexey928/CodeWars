@@ -325,7 +325,7 @@ function fibonacci(max) {// cумма всех четных в последов�
 console.log(fibonacci(25997544));
 //__________________________________________________________________________________________
 
-function tribonacci(signature, n) {// 
+function tribonacci(signature, n) {// как фибоначи тока для 3 предидущих значений 
     if (n === 0) {
         return [];
     }
@@ -340,3 +340,19 @@ function tribonacci(signature, n) {//
 }
 
 console.log(tribonacci([2, 5, 6], 5));
+//_______________________________________________________________________________
+function duplicateEncode(word) {//заменяет на ) если есть повтор и на ( если его нет 
+    const wordArr = [];
+    const ignorCase = word.toUpperCase();
+    const are = [...ignorCase];
+    are.forEach((item, i) => {
+        let arr = [...are];
+        arr.splice(i, 1);
+        if (arr.join("").includes(item)) {
+            wordArr[i] = ")"
+        } else {
+            wordArr[i] = "("
+        }
+    })
+    return wordArr.join("");
+}
