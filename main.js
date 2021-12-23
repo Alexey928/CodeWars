@@ -356,3 +356,23 @@ function duplicateEncode(word) {//заменяет на ) если есть по
     })
     return wordArr.join("");
 }
+
+// вход "hgvjvjh"-->["hg","vj","vj","h_"]
+function yo(str) {
+    const arrTwise = [];
+    const arey = str.split("")
+    arey.forEach((it, i) => {
+        if (!(i % 2 == 0)) {
+            arrTwise.push(`${arey[i - 1]}${it}`);
+        }
+    })
+    if (!(arey.length % 2 === 0)) {
+
+        arrTwise.push(arey[arey.length - 1] + "_")
+    }
+    debugger
+
+    return arey.length === 0 ? [] : arrTwise
+}
+
+console.log(yo("oooo"));
