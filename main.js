@@ -376,3 +376,26 @@ function yo(str) {
 }
 
 console.log(yo("oooo"));
+
+function curry(f) { // curry(f) выполняет каррирование
+    debugger
+    return function(a) {
+        debugger
+        return function(b) {
+            debugger
+            return f(a, b);
+        };
+    };
+}
+
+// использование
+function sum(a, b) {
+    debugger
+    return a + b;
+}
+
+let curriedSum = curry(sum);
+curriedSum(5)
+
+//alert( curriedSum(1)(2) ); // 3
+let a ="sd"
