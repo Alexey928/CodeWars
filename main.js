@@ -370,32 +370,68 @@ function yo(str) {
 
         arrTwise.push(arey[arey.length - 1] + "_")
     }
-    debugger
+
 
     return arey.length === 0 ? [] : arrTwise
 }
-
+//_________________________________________________________________________________________
 console.log(yo("oooo"));
 
 function curry(f) { // curry(f) выполняет каррирование
     debugger
     return function(a) {
-        debugger
+
         return function(b) {
-            debugger
+
             return f(a, b);
         };
     };
 }
-
-// использование
 function sum(a, b) {
-    debugger
+
     return a + b;
 }
-
 let curriedSum = curry(sum);
 curriedSum(5)
+console.log( curriedSum(1)(2) ); // 3
 
-//alert( curriedSum(1)(2) ); // 3
-let a ="sd"
+// test areys m - n to unic value
+//_____________________________________________________________________________________________________________________
+function duplicateElements(m, n) {
+    let bool = false;
+    if (m.length===0||n.length===0){
+        return false
+    }
+    m.forEach((item)=>{
+        if(n.includes(item, 0)){
+           bool = true
+        }
+    })
+    return bool;
+}
+//__________________________________________________________________________________________________________________
+// constract arey (syze x syze) with shifted value based on basis ;)  ;
+multiplicationTable = function(size) {
+  let arr = [];
+  let basis  = [];
+    for(let i = 0;i<size;i++){
+        basis.push(i+1);
+        arr.push(0)
+    }
+    let basisClon = [...basis];
+    arr.forEach((item,i)=>{
+        arr[i] = basis.map((it,i)=> it+basisClon[i])
+        basis = arr[i];
+    })
+     arr.unshift(basisClon)
+     arr.pop();
+ return arr
+}
+console.log(multiplicationTable(10))
+//____________________________________________________________________________________________________________________
+let a =  [1,2,3,4];
+a.forEach((item,i)=>{a[i]+=1})// прикол с форичём :)) а через итем не мутирует
+console.log(a)
+
+
+
